@@ -2,6 +2,7 @@ import express, { json } from 'express';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 // my imports
 import userRoutes from './routes/userRoutes.js';
@@ -13,6 +14,10 @@ const app = express();
 
 app.use(cookieParser());
 app.use(json());
+app.use(cors({
+  origin: ["http://localhost:3000"],
+  credentials: true
+}));
 
 
 app.use('/api/parking', parkingRoutes);

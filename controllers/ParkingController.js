@@ -29,3 +29,10 @@ export const createParking = asyncHandler(async (req, res) => {
     parking: createdParking
   });
 });
+
+export const getParking = asyncHandler(async (req, res) => {
+  const userId = req.user;
+  const parking = await Parking.find({ owner: userId });
+  res.status(200).json(parking);
+
+})
