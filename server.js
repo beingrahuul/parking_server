@@ -3,11 +3,11 @@ import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
-
 // my imports
 import userRoutes from './routes/userRoutes.js';
 import parkingRoutes from './routes/parkingRoutes.js';
 import slotRoutes from './routes/slotRoutes.js';
+import paymentRoutes from './routes/paymentRoutes.js';
 
 dotenv.config();
 const app = express();
@@ -23,6 +23,10 @@ app.use(cors({
 app.use('/api/parking', parkingRoutes);
 app.use('/api/auth', userRoutes);
 app.use('/api/slot', slotRoutes);
+app.use('/api/payment', paymentRoutes);
+
+
+
 
 const connent_db = async () => {
   try {
