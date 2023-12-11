@@ -32,3 +32,9 @@ export const createSlot = asyncHandler(async (req, res) => {
     }
   });
 });
+
+export const getSlotDetail = asyncHandler(async (req, res) => {
+  const slotId = req.params.id;
+  const slot = await ParkingSpot.findOne({ _id: slotId });
+  res.status(200).json(slot);
+})

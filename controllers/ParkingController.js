@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler';
 import Parking from '../models/Parking.js';
+import ParkingSpot from '../models/ParkingSpot.js';
 
 
 export const createParking = asyncHandler(async (req, res) => {
@@ -36,3 +37,11 @@ export const getParking = asyncHandler(async (req, res) => {
   res.status(200).json(parking);
 
 })
+
+
+export const getSingleParking = asyncHandler(async (req, res) => {
+  const parkingId = req.params.id;
+  const parking = await Parking.findOne({ _id: parkingId });
+  res.status(200).json(parking);
+})
+
